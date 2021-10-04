@@ -1,0 +1,20 @@
+<%- include('header', { title: 'Node Repository Commits listing.' }) %>
+
+<table border="1" >
+  <tr>
+    <th>Commit Link</th>
+    <th>Name</th>
+    <th>Avatar</th>
+    <th>Time</th>
+  </tr>
+  <% for(var i=0; i < commits.length; i++) { %>
+     <tr>
+       <td ><a href="<%= commits[i].html_url %>" ><%= commits[i].sha.substr(0,7) %></a>  </td>
+       <td><a href="<%= commits[i].author.html_url %>" ><%= commits[i].commit.author.name %></a></td>
+       <td><img width="50px" height="50px" src="<%= commits[i].author.avatar_url %>" /></td>
+       <td><%= commits[i].commit.author.date %></td>
+     </tr>
+  <% } %>
+  </table>
+
+<%- include('footer') %>
